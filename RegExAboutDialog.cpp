@@ -30,7 +30,7 @@
 
 #include <QDebug>
 #include <QDialog>
-#include <QDesktopWidget>
+#include <QWidget>
 #include <QFont>
 #include <QFontDatabase>
 #include <QPainter>

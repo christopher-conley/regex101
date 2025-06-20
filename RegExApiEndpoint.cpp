@@ -148,7 +148,8 @@ bool Nedrysoft::RegExApiEndpoint::regex(QJsonObject &stateObject, QString permal
             }
 
             regexEditor["description"] = query.value("description").toString();
-            regexEditor["dateModified"] = QDateTime::fromTime_t(query.value("dateModified").toInt()).toString();
+            //regexEditor["dateModified"] = QDateTime::fromTime_t(query.value("dateModified").toInt()).toString();
+            regexEditor["dateModified"] = QDateTime::fromSecsSinceEpoch(query.value("dateModified").toInt()).toString();
             regexEditor["author"] = query.value("author").toString();
             regexEditor["flavor"] = query.value("flavor").toString();
             regexEditor["regex"] = query.value("regex").toString();
@@ -278,7 +279,8 @@ QVariant Nedrysoft::RegExApiEndpoint::processSaveRequest(const QVariant &pathPar
 
         query.bindValue(":permalinkFragment", permalinkFragment);
         query.bindValue(":deleteCode", deleteCode);
-        query.bindValue(":dateModified", QDateTime::currentDateTime().toTime_t());
+        //query.bindValue(":dateModified", QDateTime::currentDateTime().toTime_t());
+        query.bindValue(":dateModified", QDateTime::currentDateTime().toSecsSinceEpoch());
         query.bindValue(":author", "adrian");
 
         if (!query.exec()) {
@@ -343,7 +345,8 @@ QVariant Nedrysoft::RegExApiEndpoint::processForkRequest(const QVariant &pathPar
 
     query.bindValue(":permalinkFragment", permalinkFragment);
     query.bindValue(":deleteCode", deleteCode);
-    query.bindValue(":dateModified", QDateTime::currentDateTime().toTime_t());
+    //query.bindValue(":dateModified", QDateTime::currentDateTime().toTime_t());
+    query.bindValue(":dateModified", QDateTime::currentDateTime().toSecsSinceEpoch());
     query.bindValue(":author", "adrian");
 
     if (!query.exec()) {
@@ -398,7 +401,8 @@ QVariant Nedrysoft::RegExApiEndpoint::processGetLibraryItems(const QVariant &pat
                 }
 
                 jsonResult["description"] = query.value("description").toString();
-                jsonResult["dateModified"] = QDateTime::fromTime_t(query.value("dateModified").toInt()).toString();
+                //jsonResult["dateModified"] = QDateTime::fromTime_t(query.value("dateModified").toInt()).toString();
+                jsonResult["dateModified"] = QDateTime::fromSecsSinceEpoch(query.value("dateModified").toInt()).toString();
                 jsonResult["author"] = query.value("author").toString();
                 jsonResult["flavor"] = query.value("flavor").toString();
                 jsonResult["version"] = query.value("version").toInt();
@@ -434,7 +438,8 @@ QVariant Nedrysoft::RegExApiEndpoint::processGetItemDetails(const QVariant &path
         if (query.first()) {
             jsonResponse["title"] = query.value("title").toString();
             jsonResponse["description"] = query.value("description").toString();
-            jsonResponse["dateModified"] = QDateTime::fromTime_t(query.value("dateModified").toInt()).toString();
+            //jsonResponse["dateModified"] = QDateTime::fromTime_t(query.value("dateModified").toInt()).toString();
+            jsonResponse["dateModified"] = QDateTime::fromSecsSinceEpoch(query.value("dateModified").toInt()).toString();
             jsonResponse["author"] = query.value("author").toString();
             jsonResponse["flavor"] = query.value("flavor").toString();
             jsonResponse["regex"] = query.value("regex").toString();

@@ -35,7 +35,10 @@ Nedrysoft::TransparentWidget::TransparentWidget(QWidget *childWidget, double opa
 
     m_layout = new QGridLayout;
 
-    m_layout->setMargin(0);
+    QMargins margins = QMargins(0, 0, 0, 0);
+
+    //m_layout->setMargin(0);
+    m_layout->setContentsMargins(margins);
 
     m_childWidget = childWidget;
 

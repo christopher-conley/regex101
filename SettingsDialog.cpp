@@ -76,6 +76,7 @@ Nedrysoft::SettingsDialog::SettingsDialog(QWidget *parent) :
 
     m_animationGroup = nullptr;
 #else
+    QMargins margins = QMargins(0, 0, 0, 0);
     resize((QSizeF(parent->frameSize())*settingsDialogScaleFactor).toSize());
 
     m_mainLayout = new QHBoxLayout;
@@ -98,7 +99,8 @@ Nedrysoft::SettingsDialog::SettingsDialog(QWidget *parent) :
 
     m_stackedWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 
-    m_stackedWidget->layout()->setMargin(0);
+    //m_stackedWidget->layout()->setMargin(0);
+    m_stackedWidget->layout()->setContentsMargins(margins);
 
     m_mainLayout->addWidget(m_treeWidget);
 

@@ -83,7 +83,7 @@ set(APPLICATON_SOURCE_ROOT "${CMAKE_CURRENT_LIST_DIR}")
 
 set(APPLICATION_BIN_OUTPUT "${CMAKE_CURRENT_LIST_DIR}/bin/${APPLICATION_PLATFORM_ARCH}/${CMAKE_BUILD_TYPE}")
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_INCLUDE_CURRENT_DIR Off)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -140,6 +140,7 @@ set(APPLICATION_SOURCES
 
 set(APPLICATION_QT_LIBRARIES
     Core
+    Core5Compat
     Gui
     Sql
     WebEngineWidgets
@@ -158,7 +159,10 @@ endif()
 
 # Check that the Qt libraries are available
 
-find_package(Qt5 COMPONENTS ${APPLICATION_QT_LIBRARIES} REQUIRED)
+#find_package(Qt6 REQUIRED COMPONENTS Core5Compat)
+#target_link_libraries(${APPLICATION_ID} PRIVATE Qt6::Core5Compat)
+
+find_package(Qt6 COMPONENTS ${APPLICATION_QT_LIBRARIES} REQUIRED)
 
 # use Git to produce version information and pass into compiler
 
@@ -206,7 +210,7 @@ add_definitions("-DAPPLICATION_SHORT_NAME=\"${APPLICATION_SHORT_NAME}\"")
 set(APPLICATION_QT_LINK_LIBRARIES "")
 
 foreach(arg IN ITEMS ${APPLICATION_QT_LIBRARIES})
-    list(APPEND APPLICATION_QT_LINK_LIBRARIES "Qt5::${arg}")
+    list(APPEND APPLICATION_QT_LINK_LIBRARIES "Qt6::${arg}")
 endforeach()
 
 # Create an application executable (and ensure it's an application bundle under macOS)
