@@ -8,3 +8,6 @@ assets/dmg_background.tiff
 *.autosave
 
 libnode/
+result
+flake.lock
+.flatpak-builder

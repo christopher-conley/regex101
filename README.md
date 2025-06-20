@@ -14,15 +14,23 @@ This is not an official regex101 product, but the author of the site gave his pe
 
 ## Installation
 
-Binary distributions can be found under the assets on the [github releases](https://github.com/fizzyade/regex101/releases) page.
+This repo is packaged as a Nix flake. You can run it with the following command:
 
-- **Windows**.  The application is supplied as an installer executable, download and run the installer to install the application, this will create a shortcut which can be used to launch the software.
+```bash
+nix run github:lucasew/regex101 --no-write-lock-file
+```
 
-- **macOS**.  The application is supplied as a dmg disk image.  Download and open the disk image and drag the Regular Expressions 101 icon into the Applications folder, the application can then be launched by double clicking on the Regular Expressions 101 icon in Applications.
+If you for some reason need to pass some kind of flag to the program itself you will need to add a `--` to separate Nix arguments and the program arguments.
 
-- **Linux**.  The application is supplied as an AppImage.  Download the application and then from the terminal run the command:
+> **TODO**: fix installers and packaging for everyone but Nix
 
-  `chmod +x <downloaded filename>`
+> **TODO**: make CI stuff to release binaries on each release
+
+## Information
+From below this part is stuff from upstream. Things may have changed for other
+systems, and honestly, right now, I don't care for anything other than Nix and
+NixOS so you are on your own. It may work flawlessly or may not work at all. I
+didn't test. PRs welcome BTW.
 
 ## Requirements (Development)
 
